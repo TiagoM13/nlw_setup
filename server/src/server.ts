@@ -1,9 +1,19 @@
 import Fastify from "fastify";
+import { PrismaClient } from 'prisma/prisma-client'
 
 const app = Fastify();
+const prisma = new PrismaClient();
 
-app.get('/', () => {
-  return 'Hellow Word!';
+app.get('/', async () => {
+  const habits = await prisma.habit.findMany({
+    where: {
+      title: {
+        startsWith: 'beber'
+      }
+    }
+  });
+
+  return habits;
 });
 
 app.listen({
