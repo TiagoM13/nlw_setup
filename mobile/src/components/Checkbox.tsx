@@ -28,7 +28,7 @@ export const Checkbox = ({ title, checked = false, ...rest }: ICheckbox) => {
           <View className="h-8 w-8 bg-zinc-900 rounded-lg" />
       }
 
-      <Text className="text-white text-base ml-3">{title}</Text>
+      <Text className="text-white text-base ml-3 font-semibold">{title}</Text>
 
     </TouchableOpacity>
   );
