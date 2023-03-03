@@ -1,8 +1,10 @@
 import { Header } from './components/Header';
 import { Summarytable } from './components/SummaryTable';
+
+import './lib/dayjs';
 import './styles/global.css';
 
-// import { Habit } from './components/Habit';
+
 const App = () => {
   return (
     <div className="w-screen h-screen flex justify-center items-center">
