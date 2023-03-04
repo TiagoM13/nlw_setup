@@ -1,11 +1,12 @@
 import dayjs from "dayjs";
-import { useSammary } from "../hooks/data";
-import { generateDateFromYearBiginning } from "../utils/generate-dates-from-year-biginning";
+import { generateDatesFromYearBiginning } from "../utils/generate-dates-from-year-biginning";
+
 import { HabitDay } from "./HabitDay";
+import { useSammary } from "../hooks/summary";
 
 const weekDays = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'];
 
-const summaryDates = generateDateFromYearBiginning();
+const summaryDates = generateDatesFromYearBiginning();
 
 const minimumSummaryDatesSize = 18 * 7;
 const amountOfDaysToFill = minimumSummaryDatesSize - summaryDates.length;

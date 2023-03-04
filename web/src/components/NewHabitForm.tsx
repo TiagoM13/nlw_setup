@@ -1,7 +1,6 @@
-import { FormEvent, useState } from 'react';
 import { Check } from 'phosphor-react';
 import * as Checkbox from '@radix-ui/react-checkbox';
-import { api } from '../lib/axios';
+import { useCreateHabits } from '../hooks/createHabits';
 
 const availableWeekDays = [
   'Domingo',
@@ -14,38 +13,7 @@ const availableWeekDays = [
 ]
 
 export const NewHabitForm = () => {
-  const [title, setTitle] = useState("");
-  const [weekDays, setWeekDays] = useState<number[]>([]);
-
-  const createNewHabit = (event: FormEvent) => {
-    event.preventDefault();
-
-    if (!title || weekDays.length === 0) {
-      return
-    }
-
-    api.post('habits', {
-      title,
-      weekDays,
-    })
-
-    setTitle('');
-    setWeekDays([]);
-
-    alert('Hábito criado com sucesso!')
-  }
-
-  const handleToggleWeekDay = (weekDay: number) => {
-    if (weekDays.includes(weekDay)) {
-      const weekDaysWithRemovedOne = weekDays.filter(day => day !== weekDay)
-
-      setWeekDays(weekDaysWithRemovedOne)
-    } else {
-      const weekDaysWithAddedOne = [...weekDays, weekDay]
-
-      setWeekDays(weekDaysWithAddedOne)
-    }
-  }
+  const { title, weekDays, onChangeTitle, createNewHabit, handleToggleWeekDay } = useCreateHabits();
 
   return (
     <form onSubmit={createNewHabit} className="w-full flex flex-col mt-6">
@@ -60,7 +28,7 @@ export const NewHabitForm = () => {
         className="p-4 rounded-lg mt-3 bg-zinc-800 text-white placeholder:text-zinc-400"
         autoFocus
         value={title}
-        onChange={event => setTitle(event.target.value)}
+        onChange={event => onChangeTitle(event.target.value)}
       />
 
       <label htmlFor="" className="font-semibold leading-tight mt-4">

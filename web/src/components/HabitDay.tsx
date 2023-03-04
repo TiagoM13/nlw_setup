@@ -1,19 +1,14 @@
+import { useState } from 'react';
 import * as Popover from '@radix-ui/react-popover';
 import dayjs from 'dayjs';
 import clsx from 'clsx';
 
-import { ProgressBar } from './ProgressBar';
 import { HabitList } from './HabitList';
-import React from 'react';
-
-interface HabitDayProps {
-  date: Date;
-  defaultCompleted?: number;
-  amount?: number;
-}
+import { ProgressBar } from './ProgressBar';
+import { HabitDayProps } from '../interfaces/habitDay';
 
 export const HabitDay = ({ amount = 0, defaultCompleted = 0, date }: HabitDayProps) => {
-  const [completed, setCompleted] = React.useState(defaultCompleted);
+  const [completed, setCompleted] = useState(defaultCompleted);
 
   const completedPercentage = amount > 0 ? Math.round((completed / amount) * 100) : 0;
 
