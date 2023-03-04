@@ -16,7 +16,6 @@ interface IHabiDay extends TouchableOpacityProps {
   date: Date;
 };
 
-
 export const HabitDay = ({ amountOfHabits = 0, amountCompleted = 0, date, ...rest }: IHabiDay) => {
   const amountAccomplishedPercentage = amountOfHabits > 0 ? generateProgressPercentage(amountOfHabits, amountCompleted) : 0
   const today = dayjs().startOf('day').toDate();
