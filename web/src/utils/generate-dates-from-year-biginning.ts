@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 
-export function generateDateFromYearBiginning() {
+export function generateDatesFromYearBiginning() {
   const firstDayOfTheYear = dayjs().startOf('year')
   const today = new Date()
 
