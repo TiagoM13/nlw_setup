@@ -8,12 +8,12 @@ import React from 'react';
 
 interface HabitDayProps {
   date: Date;
-  defautCompleted?: number;
+  defaultCompleted?: number;
   amount?: number;
 }
 
-export const HabitDay = ({ amount = 0, defautCompleted = 0, date }: HabitDayProps) => {
-  const [completed, setCompleted] = React.useState(defautCompleted);
+export const HabitDay = ({ amount = 0, defaultCompleted = 0, date }: HabitDayProps) => {
+  const [completed, setCompleted] = React.useState(defaultCompleted);
 
   const completedPercentage = amount > 0 ? Math.round((completed / amount) * 100) : 0;
 
