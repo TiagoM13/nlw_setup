@@ -1,14 +1,16 @@
-import './styles/global.css';
+import { Header } from './components/Header';
+import { Summarytable } from './components/SummaryTable';
 
-import { Habit } from './components/Habit';
+import './lib/dayjs';
+import './styles/global.css';
 
 const App = () => {
   return (
-    <div>
-      <Habit completed={3} />
-      <Habit completed={15} />
-      <Habit completed={30} />
-      <Habit completed={60} />
+    <div className="w-screen h-screen flex justify-center items-center">
+      <div className="w-full max-w-5xl px-6 flex flex-col gap-16">
+        <Header />
+        <Summarytable />
+      </div>
     </div>
   )
 }
